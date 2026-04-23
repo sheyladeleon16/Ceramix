@@ -15,7 +15,7 @@ public class Firing
     public void AddPiece(Piece piece)
     {
         if (piece.Status != "Finished")
-            throw new Exception("Only finished pieces can be fired.");
+            throw new Exception("Piece must be finished");
 
         Pieces.Add(piece);
     }

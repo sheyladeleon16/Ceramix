@@ -4,23 +4,16 @@ public class Piece
 {
     public Guid Id { get; set; }
     public string Name { get; set; }
-    public string Material { get; set; }
     public string Status { get; set; }
-
     public Guid StudentId { get; set; }
 
-    // Constructor
-    public Piece(string name, string material)
+    public Piece(string name, Guid studentId)
     {
         Id = Guid.NewGuid();
         Name = name;
-        Material = material;
+        StudentId = studentId;
         Status = "In Progress";
     }
 
-    // Método
-    public void MarkAsFinished()
-    {
-        Status = "Finished";
-    }
+    public void Finish() => Status = "Finished";
 }
