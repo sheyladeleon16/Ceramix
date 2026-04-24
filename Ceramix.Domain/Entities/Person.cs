@@ -12,8 +12,4 @@ public abstract class Person
         Name = name;
         Email = email;
     }
-    public virtual string GetInfo()
-    {
-        return $"{Name} - {Email}";
-    }
 }
