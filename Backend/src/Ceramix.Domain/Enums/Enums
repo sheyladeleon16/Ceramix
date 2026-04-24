@@ -1,0 +1,44 @@
+namespace Ceramix.Domain.Enums;
+
+public enum EnrollmentStatus
+{
+    Pending = 0,
+    Active = 1,
+    Completed = 2,
+    Cancelled = 3
+}
+
+public enum PaymentStatus
+{
+    Pending = 0,
+    Paid = 1,
+    Failed = 2,
+    Refunded = 3
+}
+
+public enum PaymentMethod
+{
+    Cash = 0,
+    CreditCard = 1,
+    BankTransfer = 2,
+    DigitalWallet = 3
+}
+
+public enum SkillLevel
+{
+    Beginner = 0,
+    Intermediate = 1,
+    Advanced = 2,
+    Expert = 3
+}
+
+public enum WorkshopCategory
+{
+    HandBuilding = 0,
+    WheelThrowing = 1,
+    Glazing = 2,
+    Sculpture = 3,
+    Raku = 4,
+    Children = 5,
+    Mixed = 6
+}
