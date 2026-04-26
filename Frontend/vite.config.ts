@@ -6,8 +6,6 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      // Redirige /api/* al backend durante desarrollo
-      // Así evitas problemas de CORS en dev
       '/api': {
         target: 'http://localhost:5000',
         changeOrigin: true,
