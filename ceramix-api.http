@@ -1,0 +1,257 @@
+### Ceramix API — REST Client
+### Instala la extensión "REST Client" (humao.rest-client) para usar este archivo
+### Abre el archivo, haz clic en "Send Request" sobre cualquier bloque
+
+@baseUrl = http://localhost:5000/api
+
+# ══════════════════════════════════════════════════════
+#  WORKSHOPS
+# ══════════════════════════════════════════════════════
+
+### Obtener todos los talleres
+GET {{baseUrl}}/workshops
+Content-Type: application/json
+
+###
+
+### Crear un taller
+POST {{baseUrl}}/workshops
+Content-Type: application/json
+
+{
+  "title": "Taller de Prueba",
+  "description": "Descripción del taller",
+  "maxStudents": 10,
+  "price": 1200.00,
+  "category": 1,
+  "instructorId": "00000000-0000-0000-0000-000000000000"
+}
+
+###
+
+### Buscar taller por título
+GET {{baseUrl}}/workshops/search?title=Torno
+Content-Type: application/json
+
+# ══════════════════════════════════════════════════════
+#  INSTRUCTORS
+# ══════════════════════════════════════════════════════
+
+### Obtener todos los instructores
+GET {{baseUrl}}/instructors
+Content-Type: application/json
+
+###
+
+### Crear instructor
+POST {{baseUrl}}/instructors
+Content-Type: application/json
+
+{
+  "fullName": "María González",
+  "email": "maria@ceramix.com",
+  "phone": "809-555-0101",
+  "dateOfBirth": "1985-03-12T00:00:00Z",
+  "specialty": "Wheel Throwing",
+  "yearsOfExperience": 10,
+  "bio": "Ceramista profesional con 10 años de experiencia."
+}
+
+# ══════════════════════════════════════════════════════
+#  STUDENTS
+# ══════════════════════════════════════════════════════
+
+### Obtener todos los estudiantes
+GET {{baseUrl}}/students
+Content-Type: application/json
+
+###
+
+### Crear estudiante
+POST {{baseUrl}}/students
+Content-Type: application/json
+
+{
+  "fullName": "Ana Torres",
+  "email": "ana@email.com",
+  "phone": "809-555-0201",
+  "dateOfBirth": "1998-05-20T00:00:00Z",
+  "level": 0,
+  "emergencyContact": "Pedro Torres 809-555-9001",
+  "notes": ""
+}
+
+###
+
+### Buscar estudiante
+GET {{baseUrl}}/students/search?term=Ana
+Content-Type: application/json
+
+# ══════════════════════════════════════════════════════
+#  ENROLLMENTS
+# ══════════════════════════════════════════════════════
+
+### Obtener todas las inscripciones
+GET {{baseUrl}}/enrollments
+Content-Type: application/json
+
+###
+
+### Crear inscripción
+POST {{baseUrl}}/enrollments
+Content-Type: application/json
+
+{
+  "workshopId": "00000000-0000-0000-0000-000000000000",
+  "studentId":  "00000000-0000-0000-0000-000000000000"
+}
+
+###
+
+### Confirmar inscripción
+PATCH {{baseUrl}}/enrollments/00000000-0000-0000-0000-000000000000/confirm
+Content-Type: application/json
+
+###
+
+### Cancelar inscripción
+PATCH {{baseUrl}}/enrollments/00000000-0000-0000-0000-000000000000/cancel
+Content-Type: application/json
+
+{
+  "reason": "El estudiante no puede asistir"
+}
+
+# ══════════════════════════════════════════════════════
+#  PIECES
+# ══════════════════════════════════════════════════════
+
+### Obtener todas las piezas
+GET {{baseUrl}}/pieces
+Content-Type: application/json
+
+###
+
+### Piezas listas para hornear
+GET {{baseUrl}}/pieces/ready-for-firing
+Content-Type: application/json
+
+###
+
+### Crear pieza
+POST {{baseUrl}}/pieces
+Content-Type: application/json
+
+{
+  "name": "Cuenco #1",
+  "description": "Cuenco decorativo hecho en torno",
+  "studentId":  "00000000-0000-0000-0000-000000000000",
+  "workshopId": "00000000-0000-0000-0000-000000000000",
+  "technique": 1,
+  "weightGrams": 320
+}
+
+###
+
+### Iniciar secado
+PATCH {{baseUrl}}/pieces/00000000-0000-0000-0000-000000000000/start-drying
+Content-Type: application/json
+
+###
+
+### Marcar como seca
+PATCH {{baseUrl}}/pieces/00000000-0000-0000-0000-000000000000/mark-dried
+Content-Type: application/json
+
+# ══════════════════════════════════════════════════════
+#  FIRINGS
+# ══════════════════════════════════════════════════════
+
+### Obtener todos los horneos
+GET {{baseUrl}}/firings
+Content-Type: application/json
+
+###
+
+### Crear horneo
+POST {{baseUrl}}/firings
+Content-Type: application/json
+
+{
+  "name": "Horneo Bisque Enero",
+  "type": 0,
+  "kilnTemperatureCelsius": 980,
+  "durationHours": 8,
+  "instructorId": "00000000-0000-0000-0000-000000000000",
+  "plannedStartDate": "2025-02-01T10:00:00Z"
+}
+
+###
+
+### Añadir pieza al horneo
+POST {{baseUrl}}/firings/00000000-0000-0000-0000-000000000000/pieces
+Content-Type: application/json
+
+{
+  "pieceId": "00000000-0000-0000-0000-000000000000"
+}
+
+###
+
+### Iniciar horneo
+PATCH {{baseUrl}}/firings/00000000-0000-0000-0000-000000000000/start
+Content-Type: application/json
+
+###
+
+### Finalizar horneo
+PATCH {{baseUrl}}/firings/00000000-0000-0000-0000-000000000000/finish
+Content-Type: application/json
+
+{
+  "notes": "Todas las piezas salieron bien"
+}
+
+# ══════════════════════════════════════════════════════
+#  PAYMENTS
+# ══════════════════════════════════════════════════════
+
+### Obtener todos los pagos
+GET {{baseUrl}}/payments
+Content-Type: application/json
+
+###
+
+### Registrar pago
+POST {{baseUrl}}/payments
+Content-Type: application/json
+
+{
+  "enrollmentId": "00000000-0000-0000-0000-000000000000",
+  "amount": 1500.00,
+  "method": 1
+}
+
+###
+
+### Confirmar pago
+PATCH {{baseUrl}}/payments/00000000-0000-0000-0000-000000000000/confirm
+Content-Type: application/json
+
+{
+  "transactionReference": "TXN-CC-001-2025"
+}
+
+# ══════════════════════════════════════════════════════
+#  REPORTS
+# ══════════════════════════════════════════════════════
+
+### Dashboard stats
+GET {{baseUrl}}/reports/dashboard
+Content-Type: application/json
+
+###
+
+### Reporte de talleres
+GET {{baseUrl}}/reports/workshops
+Content-Type: application/json
